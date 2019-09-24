@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.materialRaisedButton2 = new MaterialSkin.Controls.MaterialRaisedButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgvPaquetes = new System.Windows.Forms.DataGridView();
+            this.btnConfigurar = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.lblNombreCliente = new System.Windows.Forms.Label();
+            this.lblIDCliente = new System.Windows.Forms.Label();
+            this.btnCerrarSesion = new MaterialSkin.Controls.MaterialRaisedButton();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPaquetes)).BeginInit();
             this.SuspendLayout();
             // 
             // materialDivider1
@@ -48,78 +48,78 @@
             this.materialDivider1.TabIndex = 3;
             this.materialDivider1.Text = "materialDivider1";
             // 
-            // dataGridView1
+            // dgvPaquetes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(23, 237);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(948, 238);
-            this.dataGridView1.TabIndex = 4;
+            this.dgvPaquetes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPaquetes.Location = new System.Drawing.Point(23, 237);
+            this.dgvPaquetes.Name = "dgvPaquetes";
+            this.dgvPaquetes.Size = new System.Drawing.Size(948, 238);
+            this.dgvPaquetes.TabIndex = 4;
             // 
-            // materialRaisedButton1
+            // btnConfigurar
             // 
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(769, 82);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(202, 38);
-            this.materialRaisedButton1.TabIndex = 5;
-            this.materialRaisedButton1.Text = "configurar cuenta";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
-            this.materialRaisedButton1.Click += new System.EventHandler(this.MaterialRaisedButton1_Click);
+            this.btnConfigurar.Depth = 0;
+            this.btnConfigurar.Location = new System.Drawing.Point(769, 82);
+            this.btnConfigurar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnConfigurar.Name = "btnConfigurar";
+            this.btnConfigurar.Primary = true;
+            this.btnConfigurar.Size = new System.Drawing.Size(202, 38);
+            this.btnConfigurar.TabIndex = 5;
+            this.btnConfigurar.Text = "configurar cuenta";
+            this.btnConfigurar.UseVisualStyleBackColor = true;
+            this.btnConfigurar.Click += new System.EventHandler(this.MaterialRaisedButton1_Click);
             // 
-            // label1
+            // lblNombreCliente
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.label1.Location = new System.Drawing.Point(48, 90);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 30);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Nombre cliente";
+            this.lblNombreCliente.AutoSize = true;
+            this.lblNombreCliente.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreCliente.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.lblNombreCliente.Location = new System.Drawing.Point(48, 90);
+            this.lblNombreCliente.Name = "lblNombreCliente";
+            this.lblNombreCliente.Size = new System.Drawing.Size(147, 30);
+            this.lblNombreCliente.TabIndex = 6;
+            this.lblNombreCliente.Text = "Nombre cliente";
             // 
-            // label2
+            // lblIDCliente
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.label2.Location = new System.Drawing.Point(46, 136);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(149, 30);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Tu ID: ID cliente";
+            this.lblIDCliente.AutoSize = true;
+            this.lblIDCliente.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIDCliente.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.lblIDCliente.Location = new System.Drawing.Point(46, 136);
+            this.lblIDCliente.Name = "lblIDCliente";
+            this.lblIDCliente.Size = new System.Drawing.Size(149, 30);
+            this.lblIDCliente.TabIndex = 7;
+            this.lblIDCliente.Text = "Tu ID: ID cliente";
             // 
-            // materialRaisedButton2
+            // btnCerrarSesion
             // 
-            this.materialRaisedButton2.Depth = 0;
-            this.materialRaisedButton2.Location = new System.Drawing.Point(769, 135);
-            this.materialRaisedButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton2.Name = "materialRaisedButton2";
-            this.materialRaisedButton2.Primary = true;
-            this.materialRaisedButton2.Size = new System.Drawing.Size(202, 38);
-            this.materialRaisedButton2.TabIndex = 8;
-            this.materialRaisedButton2.Text = "cerrar sesion";
-            this.materialRaisedButton2.UseVisualStyleBackColor = true;
-            this.materialRaisedButton2.Click += new System.EventHandler(this.MaterialRaisedButton2_Click);
+            this.btnCerrarSesion.Depth = 0;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(769, 135);
+            this.btnCerrarSesion.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Primary = true;
+            this.btnCerrarSesion.Size = new System.Drawing.Size(202, 38);
+            this.btnCerrarSesion.TabIndex = 8;
+            this.btnCerrarSesion.Text = "cerrar sesion";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.MaterialRaisedButton2_Click);
             // 
             // Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 503);
-            this.Controls.Add(this.materialRaisedButton2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.materialRaisedButton1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnCerrarSesion);
+            this.Controls.Add(this.lblIDCliente);
+            this.Controls.Add(this.lblNombreCliente);
+            this.Controls.Add(this.btnConfigurar);
+            this.Controls.Add(this.dgvPaquetes);
             this.Controls.Add(this.materialDivider1);
             this.MaximizeBox = false;
             this.Name = "Cliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phoenix";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPaquetes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,10 +127,10 @@
 
         #endregion
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton2;
+        private System.Windows.Forms.DataGridView dgvPaquetes;
+        private MaterialSkin.Controls.MaterialRaisedButton btnConfigurar;
+        private System.Windows.Forms.Label lblNombreCliente;
+        private System.Windows.Forms.Label lblIDCliente;
+        private MaterialSkin.Controls.MaterialRaisedButton btnCerrarSesion;
     }
 }
