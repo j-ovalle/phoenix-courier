@@ -33,17 +33,17 @@ namespace PhoenixApp
 
         private void MaterialSingleLineTextField5_Click(object sender, EventArgs e)
         {
-            this.materialSingleLineTextField5.Text = string.Empty;
+            this.txtBuscarIDCliente.Text = string.Empty;
         }
 
         private void MaterialRaisedButton2_Click(object sender, EventArgs e)
         {
-            this.materialSingleLineTextField1.ResetText();
-            this.comboBox3.ResetText();
-            this.materialSingleLineTextField3.ResetText();
-            this.materialSingleLineTextField4.ResetText();
-            this.comboBox1.ResetText();
-            this.dateTimePicker1.ResetText();
+            this.txtDescrip.ResetText();
+            this.cbxProveedor.ResetText();
+            this.txtPeso.ResetText();
+            this.txtIDCliente.ResetText();
+            this.cbxSucursal.ResetText();
+            this.dtpFecha.ResetText();
 
         }
 
