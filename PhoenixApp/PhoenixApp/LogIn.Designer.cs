@@ -1,6 +1,6 @@
 ﻿namespace PhoenixApp
 {
-    partial class Form1
+    partial class LogIn
     {
         /// <summary>
         /// Required designer variable.
@@ -104,6 +104,7 @@
             this.materialRaisedButton1.TabIndex = 7;
             this.materialRaisedButton1.Text = "Registrar";
             this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.materialRaisedButton1.Click += new System.EventHandler(this.MaterialRaisedButton1_Click);
             // 
             // materialRaisedButton2
             // 
@@ -117,7 +118,7 @@
             this.materialRaisedButton2.Text = "LogIn";
             this.materialRaisedButton2.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // LogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -128,7 +129,8 @@
             this.Controls.Add(this.materialSingleLineTextField1);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);
-            this.Name = "Form1";
+            this.Name = "LogIn";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phoenix";
             this.ResumeLayout(false);
             this.PerformLayout();

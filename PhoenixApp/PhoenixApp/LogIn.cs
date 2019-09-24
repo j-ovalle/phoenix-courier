@@ -12,21 +12,30 @@ using System.Windows.Forms;
 
 namespace PhoenixApp
 {
-    public partial class Form1 : MaterialForm
+    public partial class LogIn : MaterialForm
     {
-        public Form1()
+        public LogIn()
         {
             InitializeComponent();
-            //
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             var skinManager = MaterialSkinManager.Instance;
             skinManager.AddFormToManage(this);
             skinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            skinManager.ColorScheme = new ColorScheme(Primary.Purple400, Primary.Purple600, Primary.Red200, Accent.Yellow700, TextShade.WHITE);
-}
+            skinManager.ColorScheme = new ColorScheme(Primary.DeepPurple600, Primary.DeepPurple500, Primary.Red200, Accent.DeepPurple400, TextShade.WHITE);
+        }
 
         private void MaterialLabel1_Click(object sender, EventArgs e)
         {
  
+        }
+
+        private void MaterialRaisedButton1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Registro x = new Registro();
+            x.ShowDialog();
+            this.Close();
         }
     }
 }
