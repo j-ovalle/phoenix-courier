@@ -33,5 +33,20 @@ namespace PhoenixApp
             x.ShowDialog();
             this.Close();
         }
+
+        private void Registro_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MaterialLabel10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MaterialSingleLineTextField6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

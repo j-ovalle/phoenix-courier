@@ -36,7 +36,6 @@
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialSingleLineTextField3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
@@ -58,6 +57,7 @@
             this.materialRaisedButton4 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.label1 = new System.Windows.Forms.Label();
             this.materialRaisedButton5 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,22 +155,6 @@
             this.materialLabel6.Size = new System.Drawing.Size(77, 19);
             this.materialLabel6.TabIndex = 8;
             this.materialLabel6.Text = "Peso (Lb):";
-            // 
-            // materialSingleLineTextField2
-            // 
-            this.materialSingleLineTextField2.Depth = 0;
-            this.materialSingleLineTextField2.Hint = "";
-            this.materialSingleLineTextField2.Location = new System.Drawing.Point(1019, 313);
-            this.materialSingleLineTextField2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField2.Name = "materialSingleLineTextField2";
-            this.materialSingleLineTextField2.PasswordChar = '\0';
-            this.materialSingleLineTextField2.SelectedText = "";
-            this.materialSingleLineTextField2.SelectionLength = 0;
-            this.materialSingleLineTextField2.SelectionStart = 0;
-            this.materialSingleLineTextField2.Size = new System.Drawing.Size(201, 23);
-            this.materialSingleLineTextField2.TabIndex = 9;
-            this.materialSingleLineTextField2.UseSystemPasswordChar = false;
-            this.materialSingleLineTextField2.Click += new System.EventHandler(this.MaterialSingleLineTextField2_Click);
             // 
             // materialSingleLineTextField3
             // 
@@ -451,11 +435,20 @@
             this.materialRaisedButton5.UseVisualStyleBackColor = true;
             this.materialRaisedButton5.Click += new System.EventHandler(this.MaterialRaisedButton5_Click);
             // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(1019, 318);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(201, 21);
+            this.comboBox3.TabIndex = 37;
+            // 
             // Empleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1259, 582);
+            this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.materialRaisedButton5);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.materialRaisedButton4);
@@ -477,7 +470,6 @@
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.materialSingleLineTextField3);
-            this.Controls.Add(this.materialSingleLineTextField2);
             this.Controls.Add(this.materialLabel6);
             this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.materialLabel4);
@@ -506,7 +498,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField2;
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField3;
         private System.Windows.Forms.ComboBox comboBox1;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
@@ -528,5 +519,6 @@
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton4;
         private System.Windows.Forms.Label label1;
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton5;
+        private System.Windows.Forms.ComboBox comboBox3;
     }
 }

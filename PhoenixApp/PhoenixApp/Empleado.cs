@@ -39,7 +39,7 @@ namespace PhoenixApp
         private void MaterialRaisedButton2_Click(object sender, EventArgs e)
         {
             this.materialSingleLineTextField1.ResetText();
-            this.materialSingleLineTextField2.ResetText();
+            this.comboBox3.ResetText();
             this.materialSingleLineTextField3.ResetText();
             this.materialSingleLineTextField4.ResetText();
             this.comboBox1.ResetText();
