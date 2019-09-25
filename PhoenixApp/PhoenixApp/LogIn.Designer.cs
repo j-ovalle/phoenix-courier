@@ -91,7 +91,7 @@
             this.txtContrasena.SelectionStart = 0;
             this.txtContrasena.Size = new System.Drawing.Size(121, 23);
             this.txtContrasena.TabIndex = 5;
-            this.txtContrasena.UseSystemPasswordChar = false;
+            this.txtContrasena.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
