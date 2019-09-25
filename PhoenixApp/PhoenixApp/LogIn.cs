@@ -13,12 +13,10 @@ using System.Windows.Forms;
 
 namespace PhoenixApp
 {
-    public partial class LogIn : MaterialForm
+    public partial class LogIn : MaterialForm 
     {
-        string connStr = "Data Source=phoenixcourier.database.windows.net;Initial Catalog=PhoenixDB;Persist Security Info=True;User ID=ovalle;Password=phoenix123*";
-        SqlCommand sqlCommand = new SqlCommand();
-        SqlDataAdapter sqlAdapter = new SqlDataAdapter();
-        SqlDataReader sqlDataReader;
+        //string connStr = "Data Source=phoenixcourier.database.windows.net;Initial Catalog=PhoenixDB;Persist Security Info=True;User ID=ovalle;Password=phoenix123*";
+        string connStr = "Data Source=JEANMICHAEL;Initial Catalog=PhoenixDB;Integrated Security=True";
 
         // Metodos SQL
         public LogIn()
@@ -49,7 +47,7 @@ namespace PhoenixApp
                 using (var command = connDB.CreateCommand())
                 {
                     command.CommandText = @"
-                        SELECT Contrasena, TipoPersona
+                        SELECT Contrasena, TipoPersona, Nombre, Apellidos, IdPersona
                         FROM tblPersona
                         WHERE Usuario = '" + txtUsuario.Text + "';";
                     connDB.Open();
@@ -60,15 +58,21 @@ namespace PhoenixApp
                         {
                             if (reader.GetString(1) == "E")
                             {
+                               
+                                //
                                 this.Hide();
-                                Empleado x = new Empleado();
+                                Empleado x = new Empleado();                               
                                 x.ShowDialog();
                                 this.Close();
+
                             }
                             else
                             {
+                                string nombre = reader.GetString(2) + " " + reader.GetString(3);
+                                int idPersona = reader.GetInt32(4);
+                                //Pendiente
                                 this.Hide();
-                                Cliente x = new Cliente();
+                                Cliente x = new Cliente(nombre, idPersona);
                                 x.ShowDialog();
                                 this.Close();
                             }

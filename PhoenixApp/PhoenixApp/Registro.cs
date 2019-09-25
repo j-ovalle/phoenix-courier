@@ -81,7 +81,7 @@ namespace PhoenixApp
                 txtNumResidencia.Text != string.Empty || cbxSector.Text != string.Empty || cbxSucursal.Text != string.Empty ||
                 txtUsuario.Text != string.Empty || txtPass1.Text != string.Empty || txtPass2.Text != string.Empty)
             {
-                #region Checkers
+               /*#region Checkers
                 if (txtPass1.Text != txtPass2.Text)
                 {
                     MessageBox.Show("Las contraseñas no coinciden.");
@@ -97,7 +97,8 @@ namespace PhoenixApp
                     MessageBox.Show("Telefono inválido.");
                     return;
                 }
-                #endregion
+                #endregion*/
+
                 using (var connDB = new SqlConnection(connStr))
                 {
                     // Insert Direccion

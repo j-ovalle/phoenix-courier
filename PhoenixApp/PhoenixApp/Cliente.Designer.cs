@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.dgvPaquetes = new System.Windows.Forms.DataGridView();
             this.btnConfigurar = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -50,9 +51,23 @@
             // 
             // dgvPaquetes
             // 
+            this.dgvPaquetes.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvPaquetes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPaquetes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dgvPaquetes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPaquetes.Location = new System.Drawing.Point(23, 237);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPaquetes.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvPaquetes.GridColor = System.Drawing.SystemColors.Control;
+            this.dgvPaquetes.Location = new System.Drawing.Point(23, 241);
             this.dgvPaquetes.Name = "dgvPaquetes";
+            this.dgvPaquetes.ReadOnly = true;
+            this.dgvPaquetes.RowHeadersWidth = 25;
             this.dgvPaquetes.Size = new System.Drawing.Size(948, 238);
             this.dgvPaquetes.TabIndex = 4;
             // 
@@ -85,7 +100,7 @@
             this.lblIDCliente.AutoSize = true;
             this.lblIDCliente.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIDCliente.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.lblIDCliente.Location = new System.Drawing.Point(46, 136);
+            this.lblIDCliente.Location = new System.Drawing.Point(46, 141);
             this.lblIDCliente.Name = "lblIDCliente";
             this.lblIDCliente.Size = new System.Drawing.Size(149, 30);
             this.lblIDCliente.TabIndex = 7;
@@ -119,6 +134,7 @@
             this.Name = "Cliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phoenix";
+            this.Load += new System.EventHandler(this.Cliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPaquetes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

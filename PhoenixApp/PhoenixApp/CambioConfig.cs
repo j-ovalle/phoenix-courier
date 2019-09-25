@@ -14,9 +14,14 @@ namespace PhoenixApp
 {
     public partial class CambioConfig : MaterialForm
     {
-        public CambioConfig()
+        public CambioConfig(string nombreUsuario, int idPersona)
         {
             InitializeComponent();
+
+            lblN.Text = nombreUsuario;
+            lblI.Text = Convert.ToString(idPersona);
+
+            //
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
             this.ControlBox = false;
@@ -29,7 +34,7 @@ namespace PhoenixApp
         private void MaterialRaisedButton2_Click(object sender, EventArgs e) //Cancelar
         {
             this.Hide();
-            Cliente x = new Cliente();
+            Cliente x = new Cliente(lblN.Text, Convert.ToInt16(lblI.Text));
             x.ShowDialog();
             this.Close();
         }
