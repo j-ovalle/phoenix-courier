@@ -57,7 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data.cs" />
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
     </Compile>

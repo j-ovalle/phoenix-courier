@@ -30,10 +30,10 @@
         {
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.materialRaisedButton2 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.txtUsuario = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtContrasena = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.btnLogin = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnRegistrar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.SuspendLayout();
             // 
             // materialLabel1
@@ -93,6 +93,19 @@
             this.txtContrasena.TabIndex = 5;
             this.txtContrasena.UseSystemPasswordChar = false;
             // 
+            // btnLogin
+            // 
+            this.btnLogin.Depth = 0;
+            this.btnLogin.Location = new System.Drawing.Point(184, 366);
+            this.btnLogin.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Primary = true;
+            this.btnLogin.Size = new System.Drawing.Size(107, 30);
+            this.btnLogin.TabIndex = 8;
+            this.btnLogin.Text = "LogIn";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
+            // 
             // btnRegistrar
             // 
             this.btnRegistrar.Depth = 0;
@@ -106,27 +119,15 @@
             this.btnRegistrar.UseVisualStyleBackColor = true;
             this.btnRegistrar.Click += new System.EventHandler(this.MaterialRaisedButton1_Click);
             // 
-            // btnLogin
-            // 
-            this.btnLogin.Depth = 0;
-            this.btnLogin.Location = new System.Drawing.Point(184, 366);
-            this.btnLogin.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Primary = true;
-            this.btnLogin.Size = new System.Drawing.Size(107, 30);
-            this.btnLogin.TabIndex = 8;
-            this.btnLogin.Text = "LogIn";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            // 
             // LogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(364, 450);
-            this.Controls.Add(this.materialRaisedButton2);
-            this.Controls.Add(this.materialRaisedButton1);
-            this.Controls.Add(this.materialSingleLineTextField2);
-            this.Controls.Add(this.materialSingleLineTextField1);
+            this.Controls.Add(this.btnRegistrar);
+            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.txtContrasena);
+            this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);
             this.Name = "LogIn";
@@ -141,10 +142,10 @@
 
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField1;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField2;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton2;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtUsuario;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtContrasena;
+        private MaterialSkin.Controls.MaterialRaisedButton btnLogin;
+        private MaterialSkin.Controls.MaterialRaisedButton btnRegistrar;
     }
 }
 

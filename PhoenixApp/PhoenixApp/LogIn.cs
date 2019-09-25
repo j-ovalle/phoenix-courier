@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,12 @@ namespace PhoenixApp
 {
     public partial class LogIn : MaterialForm
     {
-        string connStr = "Data Source=phoenixcourier.database.windows.net;Initial Catalog=PhoenixDB;User ID=ovalle;Password=phoenix123*;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        string connStr = "Data Source=phoenixcourier.database.windows.net;Initial Catalog=PhoenixDB;Persist Security Info=True;User ID=ovalle;Password=phoenix123*";
+        SqlCommand sqlCommand = new SqlCommand();
+        SqlDataAdapter sqlAdapter = new SqlDataAdapter();
+        SqlDataReader sqlDataReader;
+
+        // Metodos SQL
         public LogIn()
         {
             InitializeComponent();
@@ -33,10 +39,47 @@ namespace PhoenixApp
 
         private void MaterialRaisedButton1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Registro x = new Registro();
-            x.ShowDialog();
-            this.Close();
+            
+        }
+
+        private void BtnLogin_Click(object sender, EventArgs e) //LogIn
+        {
+            using (var connDB = new SqlConnection(connStr))
+            {
+                using (var command = connDB.CreateCommand())
+                {
+                    command.CommandText = @"
+                        SELECT Contrasena, TipoPersona
+                        FROM tblPersona
+                        WHERE Usuario = '" + txtUsuario.Text + "';";
+                    connDB.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read() && txtContrasena.Text == reader.GetString(0))
+                        {
+                            if (reader.GetString(1) == "E")
+                            {
+                                this.Hide();
+                                Empleado x = new Empleado();
+                                x.ShowDialog();
+                                this.Close();
+                            }
+                            else
+                            {
+                                this.Hide();
+                                Cliente x = new Cliente();
+                                x.ShowDialog();
+                                this.Close();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Usuario o contraseña no valido");
+                        }
+                    }
+                }
+            }
         }
     }
 }
