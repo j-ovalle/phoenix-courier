@@ -15,10 +15,9 @@ namespace PhoenixApp
 {
     public partial class LogIn : MaterialForm 
     {
-        //string connStr = "Data Source=phoenixcourier.database.windows.net;Initial Catalog=PhoenixDB;Persist Security Info=True;User ID=ovalle;Password=phoenix123*";
-        string connStr = "Data Source=JEANMICHAEL;Initial Catalog=PhoenixDB;Integrated Security=True";
+        string connStr = "Data Source=phoenixcourier.database.windows.net;Initial Catalog=PhoenixDB;Persist Security Info=True;User ID=ovalle;Password=phoenix123*";
+        //string connStr = "Data Source=JEANMICHAEL;Initial Catalog=PhoenixDB;Integrated Security=True";
 
-        // Metodos SQL
         public LogIn()
         {
             InitializeComponent();
@@ -28,16 +27,6 @@ namespace PhoenixApp
             skinManager.AddFormToManage(this);
             skinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             skinManager.ColorScheme = new ColorScheme(Primary.DeepPurple600, Primary.DeepPurple500, Primary.Red200, Accent.DeepPurple400, TextShade.WHITE);
-        }
-
-        private void MaterialLabel1_Click(object sender, EventArgs e)
-        {
- 
-        }
-
-        private void MaterialRaisedButton1_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void BtnLogin_Click(object sender, EventArgs e) //LogIn
@@ -58,21 +47,15 @@ namespace PhoenixApp
                         {
                             if (reader.GetString(1) == "E")
                             {
-                               
-                                //
                                 this.Hide();
                                 Empleado x = new Empleado();                               
                                 x.ShowDialog();
                                 this.Close();
-
                             }
                             else
                             {
-                                string nombre = reader.GetString(2) + " " + reader.GetString(3);
-                                int idPersona = reader.GetInt32(4);
-                                //Pendiente
                                 this.Hide();
-                                Cliente x = new Cliente(nombre, idPersona);
+                                Cliente x = new Cliente(reader.GetString(2) + " " + reader.GetString(3), reader.GetInt32(4));
                                 x.ShowDialog();
                                 this.Close();
                             }
@@ -84,6 +67,14 @@ namespace PhoenixApp
                     }
                 }
             }
+        }
+
+        private void BtnRegistrar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Registro x = new Registro();
+            x.ShowDialog();
+            this.Close();
         }
     }
 }

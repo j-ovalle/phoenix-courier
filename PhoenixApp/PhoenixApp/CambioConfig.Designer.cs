@@ -44,8 +44,6 @@
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.btnGuardar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnCancelar = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.lblN = new System.Windows.Forms.Label();
-            this.lblI = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -245,6 +243,7 @@
             this.btnGuardar.TabIndex = 14;
             this.btnGuardar.Text = "guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -259,33 +258,11 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.MaterialRaisedButton2_Click);
             // 
-            // lblN
-            // 
-            this.lblN.AutoSize = true;
-            this.lblN.Location = new System.Drawing.Point(438, 67);
-            this.lblN.Name = "lblN";
-            this.lblN.Size = new System.Drawing.Size(35, 13);
-            this.lblN.TabIndex = 16;
-            this.lblN.Text = "label3";
-            this.lblN.Visible = false;
-            // 
-            // lblI
-            // 
-            this.lblI.AutoSize = true;
-            this.lblI.Location = new System.Drawing.Point(438, 80);
-            this.lblI.Name = "lblI";
-            this.lblI.Size = new System.Drawing.Size(35, 13);
-            this.lblI.TabIndex = 17;
-            this.lblI.Text = "label4";
-            this.lblI.Visible = false;
-            // 
             // CambioConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(476, 552);
-            this.Controls.Add(this.lblI);
-            this.Controls.Add(this.lblN);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtCorreo);
@@ -306,6 +283,7 @@
             this.Name = "CambioConfig";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phoenix";
+            this.Load += new System.EventHandler(this.CambioConfig_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,7 +307,5 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private MaterialSkin.Controls.MaterialRaisedButton btnGuardar;
         private MaterialSkin.Controls.MaterialRaisedButton btnCancelar;
-        private System.Windows.Forms.Label lblN;
-        private System.Windows.Forms.Label lblI;
     }
 }

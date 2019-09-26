@@ -313,7 +313,6 @@
             this.txtNumResidencia.Size = new System.Drawing.Size(79, 23);
             this.txtNumResidencia.TabIndex = 22;
             this.txtNumResidencia.UseSystemPasswordChar = false;
-            this.txtNumResidencia.Click += new System.EventHandler(this.MaterialSingleLineTextField6_Click);
             // 
             // materialLabel10
             // 
@@ -327,7 +326,6 @@
             this.materialLabel10.Size = new System.Drawing.Size(164, 19);
             this.materialLabel10.TabIndex = 21;
             this.materialLabel10.Text = "Numero de Residencia:";
-            this.materialLabel10.Click += new System.EventHandler(this.MaterialLabel10_Click);
             // 
             // materialLabel9
             // 

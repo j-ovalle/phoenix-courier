@@ -48,7 +48,6 @@
             this.materialLabel1.Size = new System.Drawing.Size(65, 19);
             this.materialLabel1.TabIndex = 0;
             this.materialLabel1.Text = "Usuario:";
-            this.materialLabel1.Click += new System.EventHandler(this.MaterialLabel1_Click);
             // 
             // materialLabel2
             // 
@@ -117,7 +116,7 @@
             this.btnRegistrar.TabIndex = 7;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = true;
-            this.btnRegistrar.Click += new System.EventHandler(this.MaterialRaisedButton1_Click);
+            this.btnRegistrar.Click += new System.EventHandler(this.BtnRegistrar_Click);
             // 
             // LogIn
             // 

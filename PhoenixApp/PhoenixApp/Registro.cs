@@ -63,47 +63,43 @@ namespace PhoenixApp
             }
         }
 
-        private void MaterialLabel10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MaterialSingleLineTextField6_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BtnRegistrar_Click(object sender, EventArgs e)
         {
             int IdDireccion = 0;
-            if (txtNombre.Text != string.Empty || txtApellidos.Text != string.Empty || txtCedula.Text != string.Empty ||
-                txtCorreo.Text != string.Empty || txtTelefono.Text != string.Empty || txtDireccion.Text != string.Empty ||
-                txtNumResidencia.Text != string.Empty || cbxSector.Text != string.Empty || cbxSucursal.Text != string.Empty ||
-                txtUsuario.Text != string.Empty || txtPass1.Text != string.Empty || txtPass2.Text != string.Empty)
+            if (txtNombre.Text != string.Empty && txtApellidos.Text != string.Empty && txtCedula.Text != string.Empty &&
+                txtCorreo.Text != string.Empty && txtTelefono.Text != string.Empty && txtDireccion.Text != string.Empty &&
+                txtNumResidencia.Text != string.Empty && cbxSector.Text != string.Empty && cbxSucursal.Text != string.Empty &&
+                txtUsuario.Text != string.Empty && txtPass1.Text != string.Empty && txtPass2.Text != string.Empty)
             {
-               /*#region Checkers
+                
+               #region Checkers
                 if (txtPass1.Text != txtPass2.Text)
                 {
                     MessageBox.Show("Las contraseñas no coinciden.");
                     return;
                 }
-                if (int.TryParse(txtCedula.Text, out int n) || txtCedula.Text.Length != 11)
+                if (!txtCedula.Text.All(char.IsDigit) || txtCedula.Text.Length != 11)
                 {
                     MessageBox.Show("Cédula inválida.");
                     return;
                 }
-                if (int.TryParse(txtTelefono.Text, out int m) || txtTelefono.Text.Length != 10)
+                if (!txtTelefono.Text.All(char.IsDigit) || txtTelefono.Text.Length != 10)
                 {
-                    MessageBox.Show("Telefono inválido.");
+                    MessageBox.Show("Teléfono inválido.");
                     return;
                 }
-                #endregion*/
+                if (!txtNumResidencia.Text.All(char.IsDigit))
+                {
+                    MessageBox.Show("Número de residencia inválido.");
+                    return;
+                }
+                #endregion
 
                 using (var connDB = new SqlConnection(connStr))
                 {
-                    // Insert Direccion
                     using (var command = connDB.CreateCommand())
                     {
+                        //Insert Direccion
                         command.CommandText = @"
                             INSERT INTO tblDireccion (Calle, NumResidencia, IdSector)
                             OUTPUT inserted.IdDireccion
@@ -117,16 +113,12 @@ namespace PhoenixApp
                                 IdDireccion = reader.GetInt32(0);
                             }
                         }
-                        connDB.Close();
-                    }
-                    // Insert Persona
-                    using (var command = connDB.CreateCommand())
-                    {
+
+                        //Insert Persona
                         command.CommandText = @"
                             INSERT INTO tblPersona (Nombre, Apellidos, Usuario, Contrasena, Cedula, Email, Telefono, Estado, IdDireccion, IdSucursal, TipoPersona)
                             OUTPUT inserted.IdPersona
-                            SELECT '" + txtNombre.Text+"', '"+txtApellidos.Text+"', '"+txtUsuario.Text+"', '"+ txtPass1.Text +"', '"+txtCedula.Text+"', '"+txtCorreo.Text+"', "+txtTelefono.Text + ",'A', "+ IdDireccion.ToString() +", IdSucursal, 'C' FROM tblSucursal WHERE NombreSucursal = '" +cbxSucursal.Text +"';";
-                        connDB.Open();
+                            SELECT '" + txtNombre.Text + "', '" + txtApellidos.Text + "', '" + txtUsuario.Text + "', '" + txtPass1.Text + "', '" + txtCedula.Text + "', '" + txtCorreo.Text + "', " + txtTelefono.Text + ",'A', " + IdDireccion.ToString() + ", IdSucursal, 'C' FROM tblSucursal WHERE NombreSucursal = '" + cbxSucursal.Text + "';";
 
                         using (var reader = command.ExecuteReader())
                         {

@@ -15,20 +15,20 @@ namespace PhoenixApp
 {
     public partial class Cliente : MaterialForm {
 
-        //SqlConnection connStr = new SqlConnection("Data Source=phoenixcourier.database.windows.net;Initial Catalog=PhoenixDB;Persist Security Info=True;User ID=ovalle;Password=phoenix123*");
-        SqlConnection connStr = new SqlConnection("Data Source=JEANMICHAEL;Initial Catalog=PhoenixDB;Integrated Security=True");
+        SqlConnection connStr = new SqlConnection("Data Source=phoenixcourier.database.windows.net;Initial Catalog=PhoenixDB;Persist Security Info=True;User ID=ovalle;Password=phoenix123*");
+        //SqlConnection connStr = new SqlConnection("Data Source=JEANMICHAEL;Initial Catalog=PhoenixDB;Integrated Security=True");
         SqlDataAdapter SqlAdapter = new SqlDataAdapter();
-
-        public Cliente(string nombre, int id)
+        string nombrePersona;
+        int idPersona;
+        
+        public Cliente(string nombrePersona, int idPersona)
         {
             InitializeComponent();
+            this.nombrePersona = nombrePersona;
+            this.idPersona = idPersona;
 
-            //Datos tomados del Form LogIn
-            string nombreUsuario = nombre;
-            int idPersona = id;
-
-            lblNombreCliente.Text = nombre;
-            lblIDCliente.Text = Convert.ToString(id);
+            lblNombreCliente.Text = nombrePersona;
+            lblIDCliente.Text = "Tu ID: " + idPersona.ToString();
 
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
@@ -43,7 +43,7 @@ namespace PhoenixApp
          {
             connStr.Open();
             DataTable dt = new DataTable();
-            SqlAdapter = new SqlDataAdapter("Select * from tblPaquete where IdCliente = " + lblIDCliente.Text, connStr);
+            SqlAdapter = new SqlDataAdapter("Select * from tblPaquete where IdCliente = " + idPersona.ToString(), connStr);
             SqlAdapter.Fill(dt);
             dgvPaquetes.DataSource = dt;
             connStr.Close();
@@ -53,7 +53,7 @@ namespace PhoenixApp
         private void MaterialRaisedButton1_Click(object sender, EventArgs e) //Configurar cuenta
         {
             this.Hide();
-            CambioConfig x = new CambioConfig(lblNombreCliente.Text, Convert.ToInt16(lblIDCliente.Text));
+            CambioConfig x = new CambioConfig(nombrePersona, idPersona);
             x.ShowDialog();
             this.Close();
         }
