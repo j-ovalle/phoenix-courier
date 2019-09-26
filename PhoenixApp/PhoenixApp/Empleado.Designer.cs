@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvPaquetes = new System.Windows.Forms.DataGridView();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.txtDescrip = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
@@ -53,21 +53,23 @@
             this.cbkCancelado = new MaterialSkin.Controls.MaterialCheckBox();
             this.cbkEnCamino = new MaterialSkin.Controls.MaterialCheckBox();
             this.cbkDisponible = new MaterialSkin.Controls.MaterialCheckBox();
-            this.cbkRetcibido = new MaterialSkin.Controls.MaterialCheckBox();
+            this.cbkRecibido = new MaterialSkin.Controls.MaterialCheckBox();
             this.btnFiltrar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialRaisedButton();
             this.cbxProveedor = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPaquetes)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvPaquetes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(25, 148);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(748, 228);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvPaquetes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPaquetes.Location = new System.Drawing.Point(25, 148);
+            this.dgvPaquetes.Name = "dgvPaquetes";
+            this.dgvPaquetes.ReadOnly = true;
+            this.dgvPaquetes.Size = new System.Drawing.Size(748, 228);
+            this.dgvPaquetes.TabIndex = 0;
+            this.dgvPaquetes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPaquetes_CellContentClick);
             // 
             // dtpFecha
             // 
@@ -192,6 +194,7 @@
             // 
             // btnRegistrarPaquete
             // 
+            this.btnRegistrarPaquete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegistrarPaquete.Depth = 0;
             this.btnRegistrarPaquete.Location = new System.Drawing.Point(1048, 498);
             this.btnRegistrarPaquete.MouseState = MaterialSkin.MouseState.HOVER;
@@ -201,9 +204,11 @@
             this.btnRegistrarPaquete.TabIndex = 13;
             this.btnRegistrarPaquete.Text = "registrar paquete";
             this.btnRegistrarPaquete.UseVisualStyleBackColor = true;
+            this.btnRegistrarPaquete.Click += new System.EventHandler(this.btnRegistrarPaquete_Click);
             // 
             // btnLimpiar
             // 
+            this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimpiar.Depth = 0;
             this.btnLimpiar.Location = new System.Drawing.Point(880, 498);
             this.btnLimpiar.MouseState = MaterialSkin.MouseState.HOVER;
@@ -217,6 +222,7 @@
             // 
             // btnBuscar
             // 
+            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBuscar.Depth = 0;
             this.btnBuscar.Location = new System.Drawing.Point(235, 83);
             this.btnBuscar.MouseState = MaterialSkin.MouseState.HOVER;
@@ -226,6 +232,7 @@
             this.btnBuscar.TabIndex = 17;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // materialLabel7
             // 
@@ -274,6 +281,7 @@
             // 
             // btnActualizarEstado
             // 
+            this.btnActualizarEstado.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnActualizarEstado.Depth = 0;
             this.btnActualizarEstado.Location = new System.Drawing.Point(529, 486);
             this.btnActualizarEstado.MouseState = MaterialSkin.MouseState.HOVER;
@@ -283,6 +291,7 @@
             this.btnActualizarEstado.TabIndex = 25;
             this.btnActualizarEstado.Text = "Actualizar estado";
             this.btnActualizarEstado.UseVisualStyleBackColor = true;
+            this.btnActualizarEstado.Click += new System.EventHandler(this.btnActualizarEstado_Click);
             // 
             // cbxEstadoPaquete
             // 
@@ -349,7 +358,6 @@
             this.cbkCancelado.TabIndex = 30;
             this.cbkCancelado.Text = "Cancelado";
             this.cbkCancelado.UseVisualStyleBackColor = true;
-            this.cbkCancelado.CheckedChanged += new System.EventHandler(this.MaterialCheckBox2_CheckedChanged);
             // 
             // cbkEnCamino
             // 
@@ -383,24 +391,25 @@
             this.cbkDisponible.Text = "Disponible";
             this.cbkDisponible.UseVisualStyleBackColor = true;
             // 
-            // cbkRetcibido
+            // cbkRecibido
             // 
-            this.cbkRetcibido.AutoSize = true;
-            this.cbkRetcibido.Depth = 0;
-            this.cbkRetcibido.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbkRetcibido.Location = new System.Drawing.Point(151, 429);
-            this.cbkRetcibido.Margin = new System.Windows.Forms.Padding(0);
-            this.cbkRetcibido.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.cbkRetcibido.MouseState = MaterialSkin.MouseState.HOVER;
-            this.cbkRetcibido.Name = "cbkRetcibido";
-            this.cbkRetcibido.Ripple = true;
-            this.cbkRetcibido.Size = new System.Drawing.Size(83, 30);
-            this.cbkRetcibido.TabIndex = 33;
-            this.cbkRetcibido.Text = "Recibido";
-            this.cbkRetcibido.UseVisualStyleBackColor = true;
+            this.cbkRecibido.AutoSize = true;
+            this.cbkRecibido.Depth = 0;
+            this.cbkRecibido.Font = new System.Drawing.Font("Roboto", 10F);
+            this.cbkRecibido.Location = new System.Drawing.Point(151, 429);
+            this.cbkRecibido.Margin = new System.Windows.Forms.Padding(0);
+            this.cbkRecibido.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.cbkRecibido.MouseState = MaterialSkin.MouseState.HOVER;
+            this.cbkRecibido.Name = "cbkRecibido";
+            this.cbkRecibido.Ripple = true;
+            this.cbkRecibido.Size = new System.Drawing.Size(83, 30);
+            this.cbkRecibido.TabIndex = 33;
+            this.cbkRecibido.Text = "Recibido";
+            this.cbkRecibido.UseVisualStyleBackColor = true;
             // 
             // btnFiltrar
             // 
+            this.btnFiltrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFiltrar.Depth = 0;
             this.btnFiltrar.Location = new System.Drawing.Point(151, 526);
             this.btnFiltrar.MouseState = MaterialSkin.MouseState.HOVER;
@@ -410,6 +419,7 @@
             this.btnFiltrar.TabIndex = 34;
             this.btnFiltrar.Text = "filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // label1
             // 
@@ -424,6 +434,7 @@
             // 
             // btnCerrarSesion
             // 
+            this.btnCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrarSesion.Depth = 0;
             this.btnCerrarSesion.Location = new System.Drawing.Point(611, 83);
             this.btnCerrarSesion.MouseState = MaterialSkin.MouseState.HOVER;
@@ -452,7 +463,7 @@
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnFiltrar);
-            this.Controls.Add(this.cbkRetcibido);
+            this.Controls.Add(this.cbkRecibido);
             this.Controls.Add(this.cbkDisponible);
             this.Controls.Add(this.cbkEnCamino);
             this.Controls.Add(this.cbkCancelado);
@@ -477,12 +488,13 @@
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.txtDescrip);
             this.Controls.Add(this.dtpFecha);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvPaquetes);
             this.MaximizeBox = false;
             this.Name = "Empleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phoenix";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Empleado_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPaquetes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -490,7 +502,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvPaquetes;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDescrip;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
@@ -515,7 +527,7 @@
         private MaterialSkin.Controls.MaterialCheckBox cbkCancelado;
         private MaterialSkin.Controls.MaterialCheckBox cbkEnCamino;
         private MaterialSkin.Controls.MaterialCheckBox cbkDisponible;
-        private MaterialSkin.Controls.MaterialCheckBox cbkRetcibido;
+        private MaterialSkin.Controls.MaterialCheckBox cbkRecibido;
         private MaterialSkin.Controls.MaterialRaisedButton btnFiltrar;
         private System.Windows.Forms.Label label1;
         private MaterialSkin.Controls.MaterialRaisedButton btnCerrarSesion;

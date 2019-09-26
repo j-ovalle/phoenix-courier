@@ -59,6 +59,7 @@ namespace PhoenixApp
                                 cbxSector.Items.Add(reader.GetString(1));
                         }
                     }
+                    connDB.Close();
                 }
             }
         }

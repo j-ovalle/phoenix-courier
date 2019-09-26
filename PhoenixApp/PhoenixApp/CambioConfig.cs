@@ -46,7 +46,7 @@ namespace PhoenixApp
 
         private void BtnGuardar_Click(object sender, EventArgs e) //Guardar
         {
-            if(int.TryParse(txtTelefono.Text, out int n) || txtTelefono.Text.Length != 10)
+            if (!txtTelefono.Text.All(char.IsDigit) || txtTelefono.Text.Length != 10)
             {
                 MessageBox.Show("Teléfono inválido.");
                 return;
