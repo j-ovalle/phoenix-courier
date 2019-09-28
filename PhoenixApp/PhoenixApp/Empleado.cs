@@ -40,7 +40,7 @@ namespace PhoenixApp
         private void Clear(object sender, EventArgs e)
         {
             this.txtDescrip.ResetText();
-            this.cbxProveedor.ResetText();
+            this.cbxProveedor.SelectedItem = null;
             this.txtPeso.ResetText();
             this.txtIDCliente.ResetText();
         }
@@ -178,7 +178,7 @@ namespace PhoenixApp
         {
             if (cbxEstadoPaquete.Text == string.Empty || idPaquete == 0)
             {
-                MessageBox.Show("Seleccione un estado o seleccione un registro.");
+                MessageBox.Show("Seleccione un estado y un registro.");
             }
             else
             {
@@ -187,16 +187,28 @@ namespace PhoenixApp
             }
         }
 
+        public bool IsFloatOrInt(string value)
+        {
+            int intValue;
+            float floatValue;
+            return Int32.TryParse(value, out intValue) || float.TryParse(value, out floatValue);
+        }
+
         private void btnRegistrarPaquete_Click(object sender, EventArgs e)
         {
-            if (txtIDCliente.Text == string.Empty || txtDescrip.Text == string.Empty || cbxProveedor.Text == string.Empty || txtPeso.Text == string.Empty)
+            if (txtIDCliente.Text == string.Empty || txtDescrip.Text == string.Empty || cbxProveedor.SelectedItem == null || txtPeso.Text == string.Empty)
             {
-                MessageBox.Show("Llene todos los campos");
+                MessageBox.Show("Por favor, llene todos los campos.");
             }
             else
             {
+                if (!IsFloatOrInt(txtPeso.Text))
+                {
+                    MessageBox.Show("Peso inválido.");
+                    return;
+                }
                 InsertPackagesData();
-                MessageBox.Show("Registro agregado con exito!");
+                MessageBox.Show("¡Paquete ingresado con éxito!");
                 GetAllPackages(sender, e);
             }
         }

@@ -78,9 +78,6 @@
     <Compile Include="Empleado.Designer.cs">
       <DependentUpon>Empleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Parameters.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Registro.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -125,7 +125,7 @@ namespace PhoenixApp
                         {
                             if (reader.Read())
                             {
-                                MessageBox.Show("Tu ID Phoenix es " + (reader.GetInt32(0)).ToString());
+                                MessageBox.Show("¡Bienvenido a la Familia Phoenix!" + Environment.NewLine + "Tu ID Phoenix es " + (reader.GetInt32(0)).ToString());
                             }
                         }
                         connDB.Close();
