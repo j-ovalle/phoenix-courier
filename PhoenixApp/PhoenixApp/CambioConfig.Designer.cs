@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CambioConfig));
             this.label1 = new System.Windows.Forms.Label();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
@@ -120,7 +121,7 @@
             this.txtPassActual.SelectionStart = 0;
             this.txtPassActual.Size = new System.Drawing.Size(138, 23);
             this.txtPassActual.TabIndex = 5;
-            this.txtPassActual.UseSystemPasswordChar = false;
+            this.txtPassActual.UseSystemPasswordChar = true;
             // 
             // txtPassNueva1
             // 
@@ -135,7 +136,7 @@
             this.txtPassNueva1.SelectionStart = 0;
             this.txtPassNueva1.Size = new System.Drawing.Size(138, 23);
             this.txtPassNueva1.TabIndex = 6;
-            this.txtPassNueva1.UseSystemPasswordChar = false;
+            this.txtPassNueva1.UseSystemPasswordChar = true;
             // 
             // txtPassNueva2
             // 
@@ -150,7 +151,7 @@
             this.txtPassNueva2.SelectionStart = 0;
             this.txtPassNueva2.Size = new System.Drawing.Size(138, 23);
             this.txtPassNueva2.TabIndex = 7;
-            this.txtPassNueva2.UseSystemPasswordChar = false;
+            this.txtPassNueva2.UseSystemPasswordChar = true;
             // 
             // label2
             // 
@@ -279,6 +280,7 @@
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "CambioConfig";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

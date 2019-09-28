@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cliente));
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.dgvPaquetes = new System.Windows.Forms.DataGridView();
             this.btnConfigurar = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -130,6 +131,7 @@
             this.Controls.Add(this.btnConfigurar);
             this.Controls.Add(this.dgvPaquetes);
             this.Controls.Add(this.materialDivider1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Cliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

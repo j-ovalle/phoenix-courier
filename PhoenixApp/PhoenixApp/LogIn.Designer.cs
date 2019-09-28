@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogIn));
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.txtUsuario = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtContrasena = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnLogin = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnRegistrar = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // materialLabel1
@@ -42,7 +45,7 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(87, 156);
+            this.materialLabel1.Location = new System.Drawing.Point(87, 291);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(65, 19);
@@ -55,7 +58,7 @@
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(62, 260);
+            this.materialLabel2.Location = new System.Drawing.Point(62, 361);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(90, 19);
@@ -66,7 +69,7 @@
             // 
             this.txtUsuario.Depth = 0;
             this.txtUsuario.Hint = "";
-            this.txtUsuario.Location = new System.Drawing.Point(170, 156);
+            this.txtUsuario.Location = new System.Drawing.Point(170, 291);
             this.txtUsuario.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.PasswordChar = '\0';
@@ -81,7 +84,7 @@
             // 
             this.txtContrasena.Depth = 0;
             this.txtContrasena.Hint = "";
-            this.txtContrasena.Location = new System.Drawing.Point(170, 260);
+            this.txtContrasena.Location = new System.Drawing.Point(170, 361);
             this.txtContrasena.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.PasswordChar = '\0';
@@ -95,7 +98,7 @@
             // btnLogin
             // 
             this.btnLogin.Depth = 0;
-            this.btnLogin.Location = new System.Drawing.Point(184, 366);
+            this.btnLogin.Location = new System.Drawing.Point(184, 436);
             this.btnLogin.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Primary = true;
@@ -108,7 +111,7 @@
             // btnRegistrar
             // 
             this.btnRegistrar.Depth = 0;
-            this.btnRegistrar.Location = new System.Drawing.Point(66, 366);
+            this.btnRegistrar.Location = new System.Drawing.Point(66, 436);
             this.btnRegistrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Primary = true;
@@ -118,20 +121,34 @@
             this.btnRegistrar.UseVisualStyleBackColor = true;
             this.btnRegistrar.Click += new System.EventHandler(this.BtnRegistrar_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(97, 90);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(179, 159);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // LogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 450);
+            this.ClientSize = new System.Drawing.Size(381, 505);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtContrasena);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "LogIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phoenix";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,6 +162,7 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtContrasena;
         private MaterialSkin.Controls.MaterialRaisedButton btnLogin;
         private MaterialSkin.Controls.MaterialRaisedButton btnRegistrar;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

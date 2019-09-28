@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registro));
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
@@ -40,7 +41,6 @@
             this.txtCedula = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtApellidos = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.cbxSucursal = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnRegistrar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnCancelar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
@@ -56,7 +56,9 @@
             this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             this.txtPass2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
+            this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // materialLabel1
@@ -221,21 +223,10 @@
             this.cbxSucursal.Size = new System.Drawing.Size(166, 21);
             this.cbxSucursal.TabIndex = 11;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.label1.Location = new System.Drawing.Point(29, 86);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(452, 41);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "¡Bienvenido a la Familia Phoenix!";
-            // 
             // btnRegistrar
             // 
             this.btnRegistrar.Depth = 0;
-            this.btnRegistrar.Location = new System.Drawing.Point(258, 822);
+            this.btnRegistrar.Location = new System.Drawing.Point(739, 468);
             this.btnRegistrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Primary = true;
@@ -248,7 +239,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Depth = 0;
-            this.btnCancelar.Location = new System.Drawing.Point(85, 822);
+            this.btnCancelar.Location = new System.Drawing.Point(566, 468);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Primary = true;
@@ -353,7 +344,7 @@
             // 
             this.txtPass1.Depth = 0;
             this.txtPass1.Hint = "";
-            this.txtPass1.Location = new System.Drawing.Point(244, 707);
+            this.txtPass1.Location = new System.Drawing.Point(725, 297);
             this.txtPass1.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtPass1.Name = "txtPass1";
             this.txtPass1.PasswordChar = '\0';
@@ -368,7 +359,7 @@
             // 
             this.txtUsuario.Depth = 0;
             this.txtUsuario.Hint = "";
-            this.txtUsuario.Location = new System.Drawing.Point(244, 660);
+            this.txtUsuario.Location = new System.Drawing.Point(725, 224);
             this.txtUsuario.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.PasswordChar = '\0';
@@ -385,7 +376,7 @@
             this.materialLabel11.Depth = 0;
             this.materialLabel11.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel11.Location = new System.Drawing.Point(142, 707);
+            this.materialLabel11.Location = new System.Drawing.Point(623, 297);
             this.materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel11.Name = "materialLabel11";
             this.materialLabel11.Size = new System.Drawing.Size(90, 19);
@@ -398,7 +389,7 @@
             this.materialLabel12.Depth = 0;
             this.materialLabel12.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel12.Location = new System.Drawing.Point(167, 664);
+            this.materialLabel12.Location = new System.Drawing.Point(648, 228);
             this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel12.Name = "materialLabel12";
             this.materialLabel12.Size = new System.Drawing.Size(65, 19);
@@ -409,7 +400,7 @@
             // 
             this.txtPass2.Depth = 0;
             this.txtPass2.Hint = "";
-            this.txtPass2.Location = new System.Drawing.Point(244, 754);
+            this.txtPass2.Location = new System.Drawing.Point(725, 365);
             this.txtPass2.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtPass2.Name = "txtPass2";
             this.txtPass2.PasswordChar = '\0';
@@ -426,30 +417,54 @@
             this.materialLabel13.Depth = 0;
             this.materialLabel13.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel13.Location = new System.Drawing.Point(73, 754);
+            this.materialLabel13.Location = new System.Drawing.Point(554, 365);
             this.materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel13.Name = "materialLabel13";
             this.materialLabel13.Size = new System.Drawing.Size(159, 19);
             this.materialLabel13.TabIndex = 28;
             this.materialLabel13.Text = "Confirmar contraseña:";
             // 
-            // materialDivider1
+            // materialDivider2
             // 
-            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(-2, 604);
-            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(515, 23);
-            this.materialDivider1.TabIndex = 30;
-            this.materialDivider1.Text = "materialDivider1";
+            this.materialDivider2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider2.Depth = 0;
+            this.materialDivider2.Location = new System.Drawing.Point(488, 64);
+            this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider2.Name = "materialDivider2";
+            this.materialDivider2.Size = new System.Drawing.Size(24, 595);
+            this.materialDivider2.TabIndex = 31;
+            this.materialDivider2.Text = "materialDivider2";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.label1.Location = new System.Drawing.Point(29, 86);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(244, 41);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Datos Personales";
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.label2.Location = new System.Drawing.Point(550, 86);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(187, 41);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "Credenciales";
             // 
             // Registro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(512, 895);
-            this.Controls.Add(this.materialDivider1);
+            this.ClientSize = new System.Drawing.Size(953, 611);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.materialDivider2);
             this.Controls.Add(this.txtPass2);
             this.Controls.Add(this.materialLabel13);
             this.Controls.Add(this.txtPass1);
@@ -478,6 +493,7 @@
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Registro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -502,7 +518,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtCedula;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtApellidos;
         private System.Windows.Forms.ComboBox cbxSucursal;
-        private System.Windows.Forms.Label label1;
         private MaterialSkin.Controls.MaterialRaisedButton btnRegistrar;
         private MaterialSkin.Controls.MaterialRaisedButton btnCancelar;
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
@@ -518,6 +533,8 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtPass2;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
-        private MaterialSkin.Controls.MaterialDivider materialDivider1;
+        private MaterialSkin.Controls.MaterialDivider materialDivider2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

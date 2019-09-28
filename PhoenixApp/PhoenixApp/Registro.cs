@@ -117,9 +117,9 @@ namespace PhoenixApp
 
                         //Insert Persona
                         command.CommandText = @"
-                            INSERT INTO tblPersona (Nombre, Apellidos, Usuario, Contrasena, Cedula, Email, Telefono, Estado, IdDireccion, IdSucursal, TipoPersona)
+                            INSERT INTO tblPersona (Nombre, Apellidos, Usuario, Contrasena, Cedula, Email, Telefono, Estado, IdDireccion, IdSucursal, TipoPersona, FechaRegistro)
                             OUTPUT inserted.IdPersona
-                            SELECT '" + txtNombre.Text + "', '" + txtApellidos.Text + "', '" + txtUsuario.Text + "', '" + txtPass1.Text + "', '" + txtCedula.Text + "', '" + txtCorreo.Text + "', " + txtTelefono.Text + ",'A', " + IdDireccion.ToString() + ", IdSucursal, 'C' FROM tblSucursal WHERE NombreSucursal = '" + cbxSucursal.Text + "';";
+                            SELECT '" + txtNombre.Text + "', '" + txtApellidos.Text + "', '" + txtUsuario.Text + "', '" + txtPass1.Text + "', '" + txtCedula.Text + "', '" + txtCorreo.Text + "', " + txtTelefono.Text + ",'A', " + IdDireccion.ToString() + ", IdSucursal, 'C', '" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") + "' FROM tblSucursal WHERE NombreSucursal = '" + cbxSucursal.Text + "';";
 
                         using (var reader = command.ExecuteReader())
                         {
@@ -140,6 +140,11 @@ namespace PhoenixApp
             {
                 MessageBox.Show("Por favor, llena todos los campos.");
             }
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

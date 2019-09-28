@@ -28,16 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Empleado));
             this.dgvPaquetes = new System.Windows.Forms.DataGridView();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.txtDescrip = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.txtPeso = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.cbxSucursal = new System.Windows.Forms.ComboBox();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.btnRegistrarPaquete = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnLimpiar = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -48,16 +45,11 @@
             this.btnActualizarEstado = new MaterialSkin.Controls.MaterialRaisedButton();
             this.cbxEstadoPaquete = new System.Windows.Forms.ComboBox();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
-            this.cbkRetirado = new MaterialSkin.Controls.MaterialCheckBox();
-            this.cbkCancelado = new MaterialSkin.Controls.MaterialCheckBox();
-            this.cbkEnCamino = new MaterialSkin.Controls.MaterialCheckBox();
-            this.cbkDisponible = new MaterialSkin.Controls.MaterialCheckBox();
-            this.cbkRecibido = new MaterialSkin.Controls.MaterialCheckBox();
-            this.btnFiltrar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCerrarSesion = new MaterialSkin.Controls.MaterialRaisedButton();
             this.cbxProveedor = new System.Windows.Forms.ComboBox();
+            this.txtContadorPaquetes = new System.Windows.Forms.Label();
+            this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPaquetes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,20 +61,13 @@
             this.dgvPaquetes.ReadOnly = true;
             this.dgvPaquetes.Size = new System.Drawing.Size(748, 228);
             this.dgvPaquetes.TabIndex = 0;
-            this.dgvPaquetes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPaquetes_CellContentClick);
-            // 
-            // dtpFecha
-            // 
-            this.dtpFecha.Location = new System.Drawing.Point(1019, 148);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(201, 20);
-            this.dtpFecha.TabIndex = 1;
+            this.dgvPaquetes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPaquetes_CellContentClick);
             // 
             // txtDescrip
             // 
             this.txtDescrip.Depth = 0;
             this.txtDescrip.Hint = "";
-            this.txtDescrip.Location = new System.Drawing.Point(1019, 254);
+            this.txtDescrip.Location = new System.Drawing.Point(1019, 242);
             this.txtDescrip.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtDescrip.Name = "txtDescrip";
             this.txtDescrip.PasswordChar = '\0';
@@ -93,44 +78,18 @@
             this.txtDescrip.TabIndex = 2;
             this.txtDescrip.UseSystemPasswordChar = false;
             // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(876, 149);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(53, 19);
-            this.materialLabel2.TabIndex = 4;
-            this.materialLabel2.Text = "Fecha:";
-            // 
             // materialLabel3
             // 
             this.materialLabel3.AutoSize = true;
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(876, 258);
+            this.materialLabel3.Location = new System.Drawing.Point(885, 246);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(93, 19);
             this.materialLabel3.TabIndex = 5;
             this.materialLabel3.Text = "Descripción:";
-            // 
-            // materialLabel4
-            // 
-            this.materialLabel4.AutoSize = true;
-            this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(876, 429);
-            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(125, 19);
-            this.materialLabel4.TabIndex = 6;
-            this.materialLabel4.Text = "Sucursal destino:";
             // 
             // materialLabel5
             // 
@@ -138,7 +97,7 @@
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(876, 317);
+            this.materialLabel5.Location = new System.Drawing.Point(900, 319);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(81, 19);
@@ -151,7 +110,7 @@
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(876, 372);
+            this.materialLabel6.Location = new System.Drawing.Point(904, 383);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(77, 19);
@@ -162,7 +121,7 @@
             // 
             this.txtPeso.Depth = 0;
             this.txtPeso.Hint = "";
-            this.txtPeso.Location = new System.Drawing.Point(1019, 368);
+            this.txtPeso.Location = new System.Drawing.Point(1019, 383);
             this.txtPeso.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtPeso.Name = "txtPeso";
             this.txtPeso.PasswordChar = '\0';
@@ -172,14 +131,6 @@
             this.txtPeso.Size = new System.Drawing.Size(201, 23);
             this.txtPeso.TabIndex = 10;
             this.txtPeso.UseSystemPasswordChar = false;
-            // 
-            // cbxSucursal
-            // 
-            this.cbxSucursal.FormattingEnabled = true;
-            this.cbxSucursal.Location = new System.Drawing.Point(1019, 427);
-            this.cbxSucursal.Name = "cbxSucursal";
-            this.cbxSucursal.Size = new System.Drawing.Size(201, 21);
-            this.cbxSucursal.TabIndex = 11;
             // 
             // materialDivider1
             // 
@@ -218,7 +169,7 @@
             this.btnLimpiar.TabIndex = 14;
             this.btnLimpiar.Text = "limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
-            this.btnLimpiar.Click += new System.EventHandler(this.MaterialRaisedButton2_Click);
+            this.btnLimpiar.Click += new System.EventHandler(this.Clear);
             // 
             // btnBuscar
             // 
@@ -232,7 +183,7 @@
             this.btnBuscar.TabIndex = 17;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.btnBuscar.Click += new System.EventHandler(this.GetAllPackages);
             // 
             // materialLabel7
             // 
@@ -240,7 +191,7 @@
             this.materialLabel7.Depth = 0;
             this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(876, 201);
+            this.materialLabel7.Location = new System.Drawing.Point(900, 170);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Size = new System.Drawing.Size(78, 19);
@@ -251,7 +202,7 @@
             // 
             this.txtIDCliente.Depth = 0;
             this.txtIDCliente.Hint = "";
-            this.txtIDCliente.Location = new System.Drawing.Point(1019, 197);
+            this.txtIDCliente.Location = new System.Drawing.Point(1019, 166);
             this.txtIDCliente.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtIDCliente.Name = "txtIDCliente";
             this.txtIDCliente.PasswordChar = '\0';
@@ -275,7 +226,6 @@
             this.txtBuscarIDCliente.SelectionStart = 0;
             this.txtBuscarIDCliente.Size = new System.Drawing.Size(180, 23);
             this.txtBuscarIDCliente.TabIndex = 21;
-            this.txtBuscarIDCliente.Text = "Inserte ID del Cliente";
             this.txtBuscarIDCliente.UseSystemPasswordChar = false;
             this.txtBuscarIDCliente.Click += new System.EventHandler(this.MaterialSingleLineTextField5_Click);
             // 
@@ -283,7 +233,7 @@
             // 
             this.btnActualizarEstado.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnActualizarEstado.Depth = 0;
-            this.btnActualizarEstado.Location = new System.Drawing.Point(529, 486);
+            this.btnActualizarEstado.Location = new System.Drawing.Point(526, 498);
             this.btnActualizarEstado.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnActualizarEstado.Name = "btnActualizarEstado";
             this.btnActualizarEstado.Primary = true;
@@ -295,8 +245,9 @@
             // 
             // cbxEstadoPaquete
             // 
+            this.cbxEstadoPaquete.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEstadoPaquete.FormattingEnabled = true;
-            this.cbxEstadoPaquete.Location = new System.Drawing.Point(529, 438);
+            this.cbxEstadoPaquete.Location = new System.Drawing.Point(298, 508);
             this.cbxEstadoPaquete.Name = "cbxEstadoPaquete";
             this.cbxEstadoPaquete.Size = new System.Drawing.Size(162, 21);
             this.cbxEstadoPaquete.TabIndex = 26;
@@ -307,119 +258,12 @@
             this.materialLabel8.Depth = 0;
             this.materialLabel8.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel8.Location = new System.Drawing.Point(363, 440);
+            this.materialLabel8.Location = new System.Drawing.Point(116, 510);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
             this.materialLabel8.Size = new System.Drawing.Size(143, 19);
             this.materialLabel8.TabIndex = 27;
             this.materialLabel8.Text = "Estado del Paquete:";
-            // 
-            // materialLabel9
-            // 
-            this.materialLabel9.AutoSize = true;
-            this.materialLabel9.Depth = 0;
-            this.materialLabel9.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel9.Location = new System.Drawing.Point(25, 387);
-            this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel9.Name = "materialLabel9";
-            this.materialLabel9.Size = new System.Drawing.Size(160, 19);
-            this.materialLabel9.TabIndex = 28;
-            this.materialLabel9.Text = "Mostrar según estado:";
-            // 
-            // cbkRetirado
-            // 
-            this.cbkRetirado.AutoSize = true;
-            this.cbkRetirado.Depth = 0;
-            this.cbkRetirado.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbkRetirado.Location = new System.Drawing.Point(25, 429);
-            this.cbkRetirado.Margin = new System.Windows.Forms.Padding(0);
-            this.cbkRetirado.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.cbkRetirado.MouseState = MaterialSkin.MouseState.HOVER;
-            this.cbkRetirado.Name = "cbkRetirado";
-            this.cbkRetirado.Ripple = true;
-            this.cbkRetirado.Size = new System.Drawing.Size(82, 30);
-            this.cbkRetirado.TabIndex = 29;
-            this.cbkRetirado.Text = "Retirado";
-            this.cbkRetirado.UseVisualStyleBackColor = true;
-            // 
-            // cbkCancelado
-            // 
-            this.cbkCancelado.AutoSize = true;
-            this.cbkCancelado.Depth = 0;
-            this.cbkCancelado.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbkCancelado.Location = new System.Drawing.Point(151, 477);
-            this.cbkCancelado.Margin = new System.Windows.Forms.Padding(0);
-            this.cbkCancelado.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.cbkCancelado.MouseState = MaterialSkin.MouseState.HOVER;
-            this.cbkCancelado.Name = "cbkCancelado";
-            this.cbkCancelado.Ripple = true;
-            this.cbkCancelado.Size = new System.Drawing.Size(95, 30);
-            this.cbkCancelado.TabIndex = 30;
-            this.cbkCancelado.Text = "Cancelado";
-            this.cbkCancelado.UseVisualStyleBackColor = true;
-            // 
-            // cbkEnCamino
-            // 
-            this.cbkEnCamino.AutoSize = true;
-            this.cbkEnCamino.Depth = 0;
-            this.cbkEnCamino.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbkEnCamino.Location = new System.Drawing.Point(25, 526);
-            this.cbkEnCamino.Margin = new System.Windows.Forms.Padding(0);
-            this.cbkEnCamino.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.cbkEnCamino.MouseState = MaterialSkin.MouseState.HOVER;
-            this.cbkEnCamino.Name = "cbkEnCamino";
-            this.cbkEnCamino.Ripple = true;
-            this.cbkEnCamino.Size = new System.Drawing.Size(94, 30);
-            this.cbkEnCamino.TabIndex = 31;
-            this.cbkEnCamino.Text = "En camino";
-            this.cbkEnCamino.UseVisualStyleBackColor = true;
-            // 
-            // cbkDisponible
-            // 
-            this.cbkDisponible.AutoSize = true;
-            this.cbkDisponible.Depth = 0;
-            this.cbkDisponible.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbkDisponible.Location = new System.Drawing.Point(25, 477);
-            this.cbkDisponible.Margin = new System.Windows.Forms.Padding(0);
-            this.cbkDisponible.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.cbkDisponible.MouseState = MaterialSkin.MouseState.HOVER;
-            this.cbkDisponible.Name = "cbkDisponible";
-            this.cbkDisponible.Ripple = true;
-            this.cbkDisponible.Size = new System.Drawing.Size(95, 30);
-            this.cbkDisponible.TabIndex = 32;
-            this.cbkDisponible.Text = "Disponible";
-            this.cbkDisponible.UseVisualStyleBackColor = true;
-            // 
-            // cbkRecibido
-            // 
-            this.cbkRecibido.AutoSize = true;
-            this.cbkRecibido.Depth = 0;
-            this.cbkRecibido.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cbkRecibido.Location = new System.Drawing.Point(151, 429);
-            this.cbkRecibido.Margin = new System.Windows.Forms.Padding(0);
-            this.cbkRecibido.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.cbkRecibido.MouseState = MaterialSkin.MouseState.HOVER;
-            this.cbkRecibido.Name = "cbkRecibido";
-            this.cbkRecibido.Ripple = true;
-            this.cbkRecibido.Size = new System.Drawing.Size(83, 30);
-            this.cbkRecibido.TabIndex = 33;
-            this.cbkRecibido.Text = "Recibido";
-            this.cbkRecibido.UseVisualStyleBackColor = true;
-            // 
-            // btnFiltrar
-            // 
-            this.btnFiltrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFiltrar.Depth = 0;
-            this.btnFiltrar.Location = new System.Drawing.Point(151, 526);
-            this.btnFiltrar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Primary = true;
-            this.btnFiltrar.Size = new System.Drawing.Size(95, 30);
-            this.btnFiltrar.TabIndex = 34;
-            this.btnFiltrar.Text = "filtrar";
-            this.btnFiltrar.UseVisualStyleBackColor = true;
-            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // label1
             // 
@@ -448,27 +292,45 @@
             // 
             // cbxProveedor
             // 
+            this.cbxProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxProveedor.FormattingEnabled = true;
-            this.cbxProveedor.Location = new System.Drawing.Point(1019, 318);
+            this.cbxProveedor.Location = new System.Drawing.Point(1019, 317);
             this.cbxProveedor.Name = "cbxProveedor";
             this.cbxProveedor.Size = new System.Drawing.Size(201, 21);
             this.cbxProveedor.TabIndex = 37;
+            // 
+            // txtContadorPaquetes
+            // 
+            this.txtContadorPaquetes.AutoSize = true;
+            this.txtContadorPaquetes.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContadorPaquetes.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.txtContadorPaquetes.Location = new System.Drawing.Point(24, 397);
+            this.txtContadorPaquetes.Name = "txtContadorPaquetes";
+            this.txtContadorPaquetes.Size = new System.Drawing.Size(20, 30);
+            this.txtContadorPaquetes.TabIndex = 38;
+            this.txtContadorPaquetes.Text = "-";
+            // 
+            // materialDivider2
+            // 
+            this.materialDivider2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider2.Depth = 0;
+            this.materialDivider2.Location = new System.Drawing.Point(-9, 451);
+            this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider2.Name = "materialDivider2";
+            this.materialDivider2.Size = new System.Drawing.Size(844, 18);
+            this.materialDivider2.TabIndex = 39;
+            this.materialDivider2.Text = "materialDivider2";
             // 
             // Empleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1259, 582);
+            this.Controls.Add(this.materialDivider2);
+            this.Controls.Add(this.txtContadorPaquetes);
             this.Controls.Add(this.cbxProveedor);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnFiltrar);
-            this.Controls.Add(this.cbkRecibido);
-            this.Controls.Add(this.cbkDisponible);
-            this.Controls.Add(this.cbkEnCamino);
-            this.Controls.Add(this.cbkCancelado);
-            this.Controls.Add(this.cbkRetirado);
-            this.Controls.Add(this.materialLabel9);
             this.Controls.Add(this.materialLabel8);
             this.Controls.Add(this.cbxEstadoPaquete);
             this.Controls.Add(this.btnActualizarEstado);
@@ -479,16 +341,13 @@
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnRegistrarPaquete);
             this.Controls.Add(this.materialDivider1);
-            this.Controls.Add(this.cbxSucursal);
             this.Controls.Add(this.txtPeso);
             this.Controls.Add(this.materialLabel6);
             this.Controls.Add(this.materialLabel5);
-            this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.materialLabel3);
-            this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.txtDescrip);
-            this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.dgvPaquetes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Empleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -503,15 +362,11 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvPaquetes;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDescrip;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
-        private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtPeso;
-        private System.Windows.Forms.ComboBox cbxSucursal;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private MaterialSkin.Controls.MaterialRaisedButton btnRegistrarPaquete;
         private MaterialSkin.Controls.MaterialRaisedButton btnLimpiar;
@@ -522,15 +377,10 @@
         private MaterialSkin.Controls.MaterialRaisedButton btnActualizarEstado;
         private System.Windows.Forms.ComboBox cbxEstadoPaquete;
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
-        private MaterialSkin.Controls.MaterialLabel materialLabel9;
-        private MaterialSkin.Controls.MaterialCheckBox cbkRetirado;
-        private MaterialSkin.Controls.MaterialCheckBox cbkCancelado;
-        private MaterialSkin.Controls.MaterialCheckBox cbkEnCamino;
-        private MaterialSkin.Controls.MaterialCheckBox cbkDisponible;
-        private MaterialSkin.Controls.MaterialCheckBox cbkRecibido;
-        private MaterialSkin.Controls.MaterialRaisedButton btnFiltrar;
         private System.Windows.Forms.Label label1;
         private MaterialSkin.Controls.MaterialRaisedButton btnCerrarSesion;
         private System.Windows.Forms.ComboBox cbxProveedor;
+        private System.Windows.Forms.Label txtContadorPaquetes;
+        private MaterialSkin.Controls.MaterialDivider materialDivider2;
     }
 }

@@ -11,22 +11,25 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace PhoenixApp
 {
     public partial class Empleado : MaterialForm
     {
-        SqlConnection connStr = new SqlConnection("Data Source=phoenixcourier.database.windows.net;Initial Catalog=PhoenixDB;Persist Security Info=True;User ID=ovalle;Password=phoenix123*");
+        string connStr = "Data Source=phoenixcourier.database.windows.net;Initial Catalog=PhoenixDB;Persist Security Info=True;User ID=ovalle;Password=phoenix123*";
+        SqlConnection connDB = new SqlConnection("Data Source=phoenixcourier.database.windows.net;Initial Catalog=PhoenixDB;Persist Security Info=True;User ID=ovalle;Password=phoenix123*");
         SqlDataAdapter SqlAdapter = new SqlDataAdapter();
-
-        int idCliente = 0;
+        string idClienteQuery = "";
+        bool[] estado = new bool[6];
+        int idPaquete = 0;
 
         public Empleado()
         {
             InitializeComponent();
+            
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
-
             var skinManager = MaterialSkinManager.Instance;
             skinManager.AddFormToManage(this);
             skinManager.Theme = MaterialSkinManager.Themes.LIGHT;
@@ -34,147 +37,111 @@ namespace PhoenixApp
         }
 
         // Metodos propios
-        private void Clear()
+        private void Clear(object sender, EventArgs e)
         {
             this.txtDescrip.ResetText();
             this.cbxProveedor.ResetText();
             this.txtPeso.ResetText();
             this.txtIDCliente.ResetText();
-            this.cbxSucursal.ResetText();
-            this.dtpFecha.ResetText();
         }
 
-        private void GetAllPackages()
+        private void GetAllPackages(object sender, EventArgs e)
         {
-            connStr.Open();
+            if (txtBuscarIDCliente.Text != "")
+            {
+                idClienteQuery = "WHERE tblPaquete.IdCliente = '" + txtBuscarIDCliente.Text + "';";
+            }
+            else
+            {
+                idClienteQuery = "";
+            }
+            connDB.Open();
             DataTable dt = new DataTable();
             SqlAdapter = new SqlDataAdapter(@"Select IdPaquete, IdCliente, Descripcion, Peso, Costo, EstadoPaquete as Estado, FechaEstado as 'Fecha de Estado' , NombreProveedor as Proveedor ,NombreSucursal as Sucursal, FechaRegistro as 'Fecha de Registro' from tblPaquete 
-            INNER JOIN tblEstadoPaquete ON tblPaquete.IdEstado = tblEstadoPaquete.IdEstado            
-            INNER JOIN tblSucursal ON tblPaquete.IdSucursal = tblSucursal.IdSucursal
-            INNER JOIN tblProveedor ON tblPaquete.IdProveedor = tblProveedor.IdProveedor", connStr);
+                                            INNER JOIN tblEstadoPaquete ON tblPaquete.IdEstado = tblEstadoPaquete.IdEstado            
+                                            INNER JOIN tblSucursal ON tblPaquete.IdSucursal = tblSucursal.IdSucursal
+                                            INNER JOIN tblProveedor ON tblPaquete.IdProveedor = tblProveedor.IdProveedor " + idClienteQuery, connDB);
             SqlAdapter.Fill(dt);
             dgvPaquetes.DataSource = dt;
-            connStr.Close();
-        }
-
-        private void GetPackagesByUser()
-        {
-            connStr.Open();
-            DataTable dt = new DataTable();
-            SqlAdapter = new SqlDataAdapter("Select * from tblPaquete where IdCliente = " + txtBuscarIDCliente.Text, connStr);
-            SqlAdapter.Fill(dt);
-            dgvPaquetes.DataSource = dt;
-            connStr.Close();
+            connDB.Close();
+            foreach (DataGridViewColumn column in dgvPaquetes.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            txtContadorPaquetes.Text = (dgvPaquetes.Rows.Count - 1).ToString() + " paquetes encontrados";
         }
 
         private void InsertPackagesData()
         {
-            using (var connStr = new SqlConnection("Data Source=phoenixcourier.database.windows.net;Initial Catalog=PhoenixDB;Persist Security Info=True;User ID=ovalle;Password=phoenix123*"))
+            int idxProveedor = cbxProveedor.SelectedIndex + 1;
+            float peso = float.Parse(txtPeso.Text, CultureInfo.InvariantCulture.NumberFormat);
+            float pesoF = (float)(Math.Truncate((double)peso*100.0) / 100.0);
+
+            float costo = pesoF * (float)150.00;
+
+            using (var connDB = new SqlConnection(connStr))
             {
-                using (var command = connStr.CreateCommand())
+                using (var command = connDB.CreateCommand())
                 {
                     //Insert Paquete
-                    command.CommandText = @"
-                        Insert into tblPaquete 
-                        values ('" + txtDescrip.Text + "', " + txtPeso.Text + ", 130, '" + dtpFecha.Value.ToString() + "', '" + dtpFecha.Value.ToString() + "', " + txtIDCliente.Text + ", " + cbxSucursal.SelectedIndex + ", " + cbxProveedor.SelectedIndex + ", 4)";
-                    connStr.Open();
+                    command.CommandText = @"INSERT INTO tblPaquete (Descripcion, Peso, Costo, FechaRegistro, FechaEstado, IdCliente, tblPaquete.IdSucursal, IdProveedor, IdEstado) 
+                                            SELECT '" + txtDescrip.Text + "', " + pesoF.ToString() + ", " + costo +", '" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") + "', '" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") +"', " + txtIDCliente.Text + ", (SELECT IdSucursal FROM tblPersona WHERE IdPersona = " + txtIDCliente.Text + "), " + idxProveedor.ToString() + ", 5;";
+                    connDB.Open();
 
                     command.ExecuteNonQuery();
                 }
             }
+            connDB.Close();
         }
 
         private void UpdateStatus()
         {
-            using (var connStr = new SqlConnection("Data Source=phoenixcourier.database.windows.net;Initial Catalog=PhoenixDB;Persist Security Info=True;User ID=ovalle;Password=phoenix123*"))
+            using (var connDB = new SqlConnection(connStr))
             {
-                using (var command = connStr.CreateCommand())
+                using (var command = connDB.CreateCommand())
                 {
+                    int index = cbxEstadoPaquete.SelectedIndex + 1;
                     command.CommandText = @"
-                        Update tblPaquete set IdEstado = " + cbxEstadoPaquete.SelectedIndex + " where IdCliente = " + idCliente;
-                    connStr.Open();
+                        Update tblPaquete set IdEstado = " + index + ", FechaEstado = '" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") + "' where IdPaquete = " + idPaquete;
+                    connDB.Open();
 
                     command.ExecuteNonQuery();
                 }
             }
+            connDB.Close();
         }
 
         private void GetDataForCbx()
         {
-            using (var connStr = new SqlConnection("Data Source=phoenixcourier.database.windows.net;Initial Catalog=PhoenixDB;Persist Security Info=True;User ID=ovalle;Password=phoenix123*"))
+            using (var connDB = new SqlConnection(connStr))
             {
-                using (var command = connStr.CreateCommand())
+                using (var command = connDB.CreateCommand())
                 {
                     command.CommandText = @"
-                        SELECT * FROM tblEstadoPaquete";
-                    connStr.Open();
+                        SELECT tblProveedor.NombreProveedor, tblEstadoPaquete.EstadoPaquete
+                        FROM tblSucursal
+                        FULL OUTER JOIN tblProveedor ON tblSucursal.IdSucursal = tblProveedor.IdProveedor
+                        FULL OUTER JOIN tblEstadoPaquete ON tblSucursal.IdSucursal = tblEstadoPaquete.IdEstado;";
+                    connDB.Open();
 
                     using (var reader = command.ExecuteReader())
                     {
-                        cbxEstadoPaquete.Items.Add("--- Seleccione un estado ---");
                         while (reader.Read())
                         {
                             if (!reader.IsDBNull(0))
+                                cbxProveedor.Items.Add(reader.GetString(0));
+                            if (!reader.IsDBNull(1))
                                 cbxEstadoPaquete.Items.Add(reader.GetString(1));
                         }
                     }
                 }
-                connStr.Close();
-
-                using (var command = connStr.CreateCommand())
-                {
-                    command.CommandText = @"
-                        SELECT * FROM tblProveedor";
-                    connStr.Open();
-
-                    using (var reader = command.ExecuteReader())
-                    {
-                        cbxProveedor.Items.Add("--- Seleccione un estado ---");
-                        while (reader.Read())
-                        {
-                            if (!reader.IsDBNull(0))
-                                cbxProveedor.Items.Add(reader.GetString(1));
-                        }
-                    }
-                }
-                connStr.Close();
-
-                using (var command = connStr.CreateCommand())
-                {
-                    command.CommandText = @"
-                        SELECT * FROM tblSucursal";
-                    connStr.Open();
-
-                    using (var reader = command.ExecuteReader())
-                    {
-                        cbxSucursal.Items.Add("--- Seleccione un estado ---");
-                        while (reader.Read())
-                        {
-                            if (!reader.IsDBNull(0))
-                                cbxSucursal.Items.Add(reader.GetString(1));
-                        }
-                    }
-                }
-                connStr.Close();
+                connDB.Close();
             }
-
-            /*connStr.Open();
-            DataTable dt = new DataTable();
-            SqlAdapter = new SqlDataAdapter("Update tblPaquete set EstadoPaquete = '" + cbxEstadoPaquete.Text + "' where IdPaquete = ", connStr);
-            SqlAdapter.Fill(dt);
-            dgvPaquetes.DataSource = dt;
-            connStr.Close();*/
         }
-        //
 
         private void MaterialSingleLineTextField5_Click(object sender, EventArgs e)
         {
             this.txtBuscarIDCliente.Text = string.Empty;
-        }
-
-        private void MaterialRaisedButton2_Click(object sender, EventArgs e)
-        {
-            Clear();
         }
 
         private void MaterialRaisedButton5_Click(object sender, EventArgs e) //Cerrar sesion
@@ -188,7 +155,7 @@ namespace PhoenixApp
         private void Empleado_Load(object sender, EventArgs e)
         {
             // Metodos que se activan al iniciar al Form
-            GetAllPackages();
+            GetAllPackages(sender, e);
             GetDataForCbx();
         }
 
@@ -197,31 +164,32 @@ namespace PhoenixApp
             // Codigo para conseguir el IdCliente al seleccionar un registro del DataGridView 
 
             DataGridViewRow row = this.dgvPaquetes.Rows[e.RowIndex];
-            idCliente = Convert.ToInt16(row.Cells["IdCliente"].Value);
+            idPaquete = Convert.ToInt16(row.Cells["IdPaquete"].Value);
+            //idCliente = Convert.ToInt32(dgvPaquetes.CurrentRow.Cells[0].Value);
         }
 
         // Botones
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            GetPackagesByUser();
+            //GetAll
         }
 
         private void btnActualizarEstado_Click(object sender, EventArgs e)
         {
-            if (cbxEstadoPaquete.Text == string.Empty || idCliente == 0)
+            if (cbxEstadoPaquete.Text == string.Empty || idPaquete == 0)
             {
-                MessageBox.Show("Seleccione un estado o seleccione un registro");
+                MessageBox.Show("Seleccione un estado o seleccione un registro.");
             }
             else
             {
                 UpdateStatus();
-                GetAllPackages();
+                GetAllPackages(sender, e);
             }
         }
 
         private void btnRegistrarPaquete_Click(object sender, EventArgs e)
         {
-            if (txtIDCliente.Text == string.Empty || txtDescrip.Text == string.Empty || cbxProveedor.Text == string.Empty || txtPeso.Text == string.Empty || cbxSucursal.Text == string.Empty)
+            if (txtIDCliente.Text == string.Empty || txtDescrip.Text == string.Empty || cbxProveedor.Text == string.Empty || txtPeso.Text == string.Empty)
             {
                 MessageBox.Show("Llene todos los campos");
             }
@@ -229,13 +197,8 @@ namespace PhoenixApp
             {
                 InsertPackagesData();
                 MessageBox.Show("Registro agregado con exito!");
-                GetAllPackages();
+                GetAllPackages(sender, e);
             }
-        }
-
-        private void btnFiltrar_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
