@@ -68,7 +68,7 @@ namespace PhoenixApp
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
-            txtContadorPaquetes.Text = (dgvPaquetes.Rows.Count - 1).ToString() + " paquetes encontrados";
+            txtContadorPaquetes.Text = (dgvPaquetes.Rows.Count).ToString() + " paquetes encontrados";
         }
 
         private void InsertPackagesData()
@@ -210,6 +210,7 @@ namespace PhoenixApp
                 InsertPackagesData();
                 MessageBox.Show("¡Paquete ingresado con éxito!");
                 GetAllPackages(sender, e);
+                Clear(sender, e);
             }
         }
     }
